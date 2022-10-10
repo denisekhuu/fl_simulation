@@ -1,0 +1,44 @@
+= SETUP Utils
+== create_default_model
+ 
+Create default model parameters as initialization for client and server models.
+This will make sure that the default behaviour is the same. 
+You will find the default model in the folder defined by configuration class with the following convention: 
+
+path: {config.cwd}/{config.TEMP}/models/, "{config.MODELNAME}.model
+
+=== Parameters
+----
+config : Configurations 
+
+Returns
+----
+
+
+=== Configuration Attributes
+Configuration Object needs the following attributes
+
+Attributes 
+----
+MODELNAME : string 
+Name of the model which defines the name of the file
+
+NETWORK : nn.Module
+CNN model definition
+
+TEMP : string 
+Name of temporary directory with all temporary files 
+
+cwd : string
+a string which represents the working directory
+----
+
+=== Usage
+
+----
+from fl_simulation.configuration import DefaultConfigurations
+from fl_simulation import create_default_model
+
+config = DefaultConfigurations()
+create_default_model(config)
+----

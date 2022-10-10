@@ -1,5 +1,6 @@
 import torch, torchvision
 from .dataset import Dataset
+import os
 
 class MNISTDataset(Dataset): 
     
@@ -8,9 +9,9 @@ class MNISTDataset(Dataset):
         
     def load_train_data(self):
         transform = torchvision.transforms.Compose([torchvision.transforms.transforms.ToTensor()])
-        
+        path = os.path.join(self.config.cwd, self.config.MNIST_DATASET_PATH)
         train_dataset = torchvision.datasets.MNIST(
-            self.config.MNIST_DATASET_PATH, 
+            path, 
             train=True, download=True,
             transform=transform)
         
@@ -24,7 +25,7 @@ class MNISTDataset(Dataset):
     
     def load_test_data(self):
         transform = torchvision.transforms.Compose([torchvision.transforms.transforms.ToTensor()])
-        
+        path = os.path.join(self.config.cwd, self.config.MNIST_DATASET_PATH)
         test_dataset = torchvision.datasets.MNIST(
             self.config.MNIST_DATASET_PATH, 
             train=False, download=True,

@@ -1,1 +1,2 @@
 from .default_configurations import DefaultConfigurations
+from .configurations import Configurations

@@ -12,9 +12,10 @@ def create_default_model(config):
 
     Parameters
     ------
-    config : Configurations 
+    :param config : Configurations regarding the CNN model
+    :type config: Configurations 
     
-    Returns
+    :return:
     ------
     
     
@@ -33,7 +34,7 @@ def create_default_model(config):
 
     """
     
-    default_model_path = os.path.join(config.TEMP, 'models', "{}.model".format(config.MODELNAME))
+    default_model_path = os.path.join(config.cwd, config.TEMP, 'models', "{}.model".format(config.MODELNAME))
     net = config.NETWORK()
     save(net.state_dict(), default_model_path)
     config.root.info("Default Model for {} saved to: {}".format(config.MODELNAME, os.path.dirname(default_model_path)))

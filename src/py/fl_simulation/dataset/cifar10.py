@@ -1,5 +1,6 @@
 import torch, torchvision
 from .dataset import Dataset
+import os
 
 class CIFAR10Dataset(Dataset): 
     
@@ -9,9 +10,9 @@ class CIFAR10Dataset(Dataset):
         
     def load_train_data(self):
         transform = torchvision.transforms.Compose([torchvision.transforms.transforms.ToTensor(),torchvision.transforms.transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
-        
+        path = os.path.join(self.config.cwd, self.config.CIFAR10_DATASET_PATH)
         train_dataset = torchvision.datasets.CIFAR10(
-            self.config.CIFAR10_DATASET_PATH, 
+            path, 
             train=True, download=True,
             transform=transform)
         
@@ -25,9 +26,9 @@ class CIFAR10Dataset(Dataset):
     
     def load_test_data(self):
         transform = torchvision.transforms.Compose([torchvision.transforms.transforms.ToTensor(),torchvision.transforms.transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
-        
+        path = os.path.join(self.config.cwd, self.config.CIFAR10_DATASET_PATH)
         test_dataset = torchvision.datasets.CIFAR10(
-            self.config.CIFAR10_DATASET_PATH, 
+            path, 
             train=False, download=True,
             transform=transform)
         
